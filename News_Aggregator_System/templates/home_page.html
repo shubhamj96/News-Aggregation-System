@@ -1,0 +1,227 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% if messages %}
+     {% for msg in messages %}
+    <script>
+        alert('{{ msg }}');
+    </script>
+     {% endfor %}
+    {% endif %}
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>NewsHunt</title>
+    <link rel="icon" type="image/x-icon" href="{% static "logo/News-logos.jpeg" %}" sizes="96X96">
+        <style>
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
+    <a class="navbar-brand" href="{% url 'homepage' %}"><img src=" {% static 'logo/neshunt.png' %}"; height="120px" width="120px";></a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 's-result' ref='world'   %}">International</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='india' %}">National</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='sharemarket'  %}">Share Market</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='sports'  %}">Sports</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='politics' %}">Politics</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='bollywood'  %}">Bollywood</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='entertainment' %}">Entertainment</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 's-result' ref='science' %}">Science</a>
+      </li>
+        <li class="nav-item">
+            <div class="dropdown show">
+  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    More +
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{% url 's-result' ref='technology' %}">Tecnology</a>
+    <a class="dropdown-item" href="{% url 's-result' ref='health' %}">Health</a>
+    <a class="dropdown-item" href="{% url 's-result' ref='hollywood' %}">Hollywood</a>
+    <a class="dropdown-item" href="{% url 's-result' ref='education' %}">Education </a>
+  </div>
+            </div>
+        </li>
+    </ul>
+
+        <div class="dropdown show" >
+  <a class="nav-link" href="#" role="button" style="color: black" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort
+  </a>
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{% url 'sort' s='relevancy'%}">Relevancy</a>
+    <a class="dropdown-item" href="{% url 'sort' s='date'%}">Date</a>
+    <a class="dropdown-item" href="{% url 'sort' s='rank'%}">Rank</a>
+    </div>
+  </div>
+<div class="dropdown show " >
+    <a class="dropdown-item" href="#" role="button" style="color: black" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="date">Language</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{% url 'lang' l='en' ref=res.user_input.q %}">English</a>
+    <a class="dropdown-item" href="{% url 'lang' l='hi' ref=res.user_input.q %}">Hindi</a>
+    <a class="dropdown-item" href="{% url 'lang' l='mr' ref=res.user_input.q %}">Marathi</a>
+    <a class="dropdown-item" href="{% url 'lang' l='gu' ref=res.user_input.q%}">Gujarati </a>
+    <a class="dropdown-item" href="{% url 'lang' l='bn' ref=res.user_input.q %}">Bengali </a>
+    <a class="dropdown-item" href="{% url 'lang' l='ur' ref=res.user_input.q %}">Urdu </a>
+    <a class="dropdown-item" href="{% url 'lang' l='ta' ref=res.user_input.q %}">Tamil </a>
+    <a class="dropdown-item" href="{% url 'lang' l='te' ref=res.user_input.q %}">Telugu </a>
+    <a class="dropdown-item" href="{% url 'lang' l='ml' ref=res.user_input.q %}">malayalam </a>
+    <a class="dropdown-item" href="{% url 'lang' l='kn' ref=res.user_input.q %}">Kannada </a>
+    <a class="dropdown-item" href="{% url 'lang' l='pa' ref=res.user_input.q %}">Punjabi </a>
+    <a class="dropdown-item" href="{% url 'lang' l='ne' ref=res.user_input.q %}">Nepali </a>
+      </div>
+</div>
+<div class="dropdown show" >
+    <a class="dropdown-item" href="#"  role="button" style="color: black" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    </div>
+
+</div>
+  </div>
+
+
+
+<div class="btn-group dropleft">
+        <a stype="button" style="background-color: white" class="btn btn-secondary dropdown-toggle mr-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
+        </svg></a>
+        <div class="dropdown-menu" style="margin-top: 10px;">
+    <a class="dropdown-item" href="{% url 'dashboard' %}">DashBoard</a>
+    <a class="dropdown-item" href="{% url 'watchlist'  %}">WatchList</a>
+    <a class="dropdown-item" href=""></a>
+  </div>
+</div>
+     <form class="form-inline my-0 my-lg-2" action="{% url 'logout'  %}" method="post">
+         {% csrf_token %}
+         <button class="btn btn-outline-success mr-5" type="submit" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 12">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+         </svg></button>
+    </form>
+</nav>
+
+{#<table border="2">#}
+{#    <tr>#}
+{#        {% for i in res.articles.0 %}#}
+{#            <th>{{ i }}</th>#}
+{#        {% endfor %}#}
+{#    </tr>#}
+{##}
+{#    {% for i in res.articles %}#}
+{#        <tr>#}
+{#            {% for x in i.values %}#}
+{#                <td>{{ x }}</td>#}
+{#            {% endfor %}#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{##}
+{#</table>#}
+
+
+
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+<div style="margin-left: 600px;margin-bottom: 5%; color: darkcyan; text-transform: capitalize"><h1>{{ res.user_input.q }} News</h1></div>
+
+
+
+<div class="row" style="margin: 6rem;">
+
+{% for x in res.articles %}
+
+    <div class="col-sm-6" >
+<div class="card mb-0"  style="max-width: 540px; height: 250px" align="left">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <a href="{% url 'discription'  id=x.id%}" style="text-decoration: none;"> <img src="{{ x.media }}" class="img-fluid rounded-start" alt="..." style="height: 200px"></a>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <a href="{% url 'discription' id=x.id %}" style="text-decoration: none; color: inherit;"><h5 class="card-text">{{ x.title }}</h5></a>
+          <div class="card-text" align="right" >
+          <small class="text-muted" style="font-size: 15px">:-{{ x.author }}</small><br>
+          <small class="text-muted" style="font-size: 13px">{{ x.rights }}</small><br>
+          <small class="text-muted" style="font-size: 10px;">{{ x.published_date }}</small>
+
+          </div>
+          </div>
+
+    </div>
+
+  </div>
+</div>
+        <form action="{% url 'addwatchlist' id=x.id %}" method="post">
+            {% csrf_token %}
+    <button type="submit" class="btn btn-outline-success" style="margin-bottom: 30px; width: 85% ">Add To WatchList</button>
+            </form>
+    </div>
+{% endfor %}
+</div>
+
+
+
+
+{% comment %}
+{% for i in x %}
+< class="title">
+    <img src="{{ i.urlToImage }}" style="height: 300px; width: 300px">
+<h3 style="color: black">{{ i.title }}</h3>
+
+<p>{{ i.description }}</p>
+</div>
+
+{% endfor %}
+{% endcomment %}
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
